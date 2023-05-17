@@ -35,7 +35,7 @@ namespace PryCantallops_TP1
             if (txtUsuario.Text == "admin" && txtPassword.Text == "123" || txtUsuario.Text == "guest" && txtPassword.Text == "321")
             {
                 this.Hide();
-                frmMain frm = new frmMain();
+                frmMenu frm = new frmMenu();
                 frm.ShowDialog();
             }
             else

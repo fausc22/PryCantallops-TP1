@@ -1,6 +1,6 @@
 ﻿namespace PryCantallops_TP1
 {
-    partial class frmMain
+    partial class frmClientes
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -42,6 +42,7 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnMenu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             this.btnClientes.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientes.Location = new System.Drawing.Point(414, 43);
+            this.btnClientes.Location = new System.Drawing.Point(348, 43);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(89, 48);
             this.btnClientes.TabIndex = 0;
@@ -63,9 +64,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(358, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 31);
+            this.label1.Size = new System.Drawing.Size(156, 31);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Menu principal";
+            this.label1.Text = "CLIENTES";
             // 
             // dgvClientes
             // 
@@ -144,18 +145,31 @@
             this.Column11.HeaderText = "Fax";
             this.Column11.Name = "Column11";
             // 
-            // frmMain
+            // btnMenu
+            // 
+            this.btnMenu.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu.Location = new System.Drawing.Point(443, 43);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(89, 48);
+            this.btnMenu.TabIndex = 3;
+            this.btnMenu.Text = "Menu Principal";
+            this.btnMenu.UseVisualStyleBackColor = false;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
+            // 
+            // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(930, 487);
+            this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.dgvClientes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClientes);
-            this.Name = "frmMain";
+            this.Name = "frmClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MENU PRINCIPAL";
+            this.Text = "CLIENTES";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
@@ -179,6 +193,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.Button btnMenu;
     }
 }
 

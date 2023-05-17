@@ -11,9 +11,9 @@ using System.Data.OleDb;
 
 namespace PryCantallops_TP1
 {
-    public partial class frmMain : Form
+    public partial class frmClientes : Form
     {
-        public frmMain()
+        public frmClientes()
         {
             InitializeComponent();
         }
@@ -54,6 +54,13 @@ namespace PryCantallops_TP1
         private void frmMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmMenu frm = new frmMenu();
+            frm.ShowDialog();
         }
     }
 }
