@@ -62,5 +62,43 @@ namespace PryCantallops_TP1
             frmMenu frm = new frmMenu();
             frm.ShowDialog();
         }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            string conexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=NEPTUNO.accdb;";
+            try
+            {
+                cnn = new OleDbConnection(conexion);
+                cnn.Open();
+                cmd = new OleDbCommand();
+                cmd.Connection = cnn;
+                cmd.CommandType = CommandType.TableDirect;
+                cmd.CommandText = "Clientes";
+                rdr = cmd.ExecuteReader();
+               
+                while (rdr.Read())
+                {
+                    if (optCiudad.Checked)
+                    {
+                        string ciudad = txtFiltrar.Text;
+                        if (ciudad == rdr[5].ToString())
+                        {
+                            dgvClientes.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6], rdr[7], rdr[8], rdr[9], rdr[10]);
+
+                        }
+                    }
+                    
+
+                }
+
+                MessageBox.Show("Datos obtenidos!", "", MessageBoxButtons.OK);
+                dgvClientes.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message, "", MessageBoxButtons.OK);
+
+            }
+        }
     }
 }
