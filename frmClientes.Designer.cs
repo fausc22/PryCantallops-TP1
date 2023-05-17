@@ -44,10 +44,10 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnMenu = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtFiltrar = new System.Windows.Forms.TextBox();
-            this.optCiudad = new System.Windows.Forms.RadioButton();
-            this.optPais = new System.Windows.Forms.RadioButton();
             this.btnFiltrar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cmbPais = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -166,12 +166,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.cmbPais);
             this.groupBox1.Controls.Add(this.btnFiltrar);
-            this.groupBox1.Controls.Add(this.txtFiltrar);
-            this.groupBox1.Controls.Add(this.optPais);
-            this.groupBox1.Controls.Add(this.optCiudad);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(518, 9);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(334, 82);
@@ -179,42 +179,11 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtrar por:";
             // 
-            // txtFiltrar
-            // 
-            this.txtFiltrar.Location = new System.Drawing.Point(192, 20);
-            this.txtFiltrar.Name = "txtFiltrar";
-            this.txtFiltrar.Size = new System.Drawing.Size(114, 26);
-            this.txtFiltrar.TabIndex = 5;
-            // 
-            // optCiudad
-            // 
-            this.optCiudad.AutoSize = true;
-            this.optCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optCiudad.Location = new System.Drawing.Point(16, 26);
-            this.optCiudad.Name = "optCiudad";
-            this.optCiudad.Size = new System.Drawing.Size(74, 20);
-            this.optCiudad.TabIndex = 0;
-            this.optCiudad.TabStop = true;
-            this.optCiudad.Text = "Ciudad";
-            this.optCiudad.UseVisualStyleBackColor = true;
-            // 
-            // optPais
-            // 
-            this.optPais.AutoSize = true;
-            this.optPais.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optPais.Location = new System.Drawing.Point(16, 51);
-            this.optPais.Name = "optPais";
-            this.optPais.Size = new System.Drawing.Size(56, 20);
-            this.optPais.TabIndex = 1;
-            this.optPais.TabStop = true;
-            this.optPais.Text = "País";
-            this.optPais.UseVisualStyleBackColor = true;
-            // 
             // btnFiltrar
             // 
             this.btnFiltrar.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltrar.Location = new System.Drawing.Point(204, 48);
+            this.btnFiltrar.Location = new System.Drawing.Point(205, 34);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(89, 26);
             this.btnFiltrar.TabIndex = 6;
@@ -222,14 +191,40 @@
             this.btnFiltrar.UseVisualStyleBackColor = false;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 16);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Ciudad";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 16);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "País";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(90, 21);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(93, 24);
+            this.comboBox1.TabIndex = 12;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // cmbPais
             // 
             this.cmbPais.FormattingEnabled = true;
-            this.cmbPais.Location = new System.Drawing.Point(78, 46);
+            this.cmbPais.Location = new System.Drawing.Point(90, 52);
             this.cmbPais.Name = "cmbPais";
-            this.cmbPais.Size = new System.Drawing.Size(96, 28);
-            this.cmbPais.TabIndex = 7;
-            this.cmbPais.Visible = false;
+            this.cmbPais.Size = new System.Drawing.Size(93, 24);
+            this.cmbPais.TabIndex = 11;
             // 
             // frmClientes
             // 
@@ -272,11 +267,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cmbPais;
         private System.Windows.Forms.Button btnFiltrar;
-        private System.Windows.Forms.TextBox txtFiltrar;
-        private System.Windows.Forms.RadioButton optPais;
-        private System.Windows.Forms.RadioButton optCiudad;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbPais;
     }
 }
 
