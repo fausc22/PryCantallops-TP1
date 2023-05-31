@@ -16,7 +16,7 @@ namespace PryCantallops_TP1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTablas());
+            Application.Run(new frmLogin());
         }
     }
 }

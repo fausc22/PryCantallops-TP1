@@ -13,6 +13,8 @@ namespace PryCantallops_TP1
 {
     public partial class frmClientes : Form
     {
+        string PaisFiltrado = "";
+        string ciudadFiltrada = "";
         public frmClientes()
         {
             InitializeComponent();
@@ -92,23 +94,33 @@ namespace PryCantallops_TP1
                 cnn.Open();
                 rdr = cmd.ExecuteReader();
                
-                string PaisFiltrado = cmbPais.SelectedItem.ToString();
+                PaisFiltrado = cmbPais.SelectedItem.ToString();
+                  
                 while (rdr.Read())
                 {
-                    if (rdr[8].ToString() == PaisFiltrado)
+                    if (cmbCiudad.SelectedIndex == -1)
                     {
-                        
+                        if (rdr[8].ToString() == PaisFiltrado)
+                        {
 
-                        dgvClientes.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6], rdr[7], rdr[8], rdr[9], rdr[10]);
-                        
-                        
+
+                            dgvClientes.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6], rdr[7], rdr[8], rdr[9], rdr[10]);
+
+
+                        }
                     }
-                    
+                    else
+                    {
+                        ciudadFiltrada = cmbCiudad.SelectedItem.ToString();
+                        if (rdr[5].ToString() == ciudadFiltrada)
+                        {
 
 
+                            dgvClientes.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6], rdr[7], rdr[8], rdr[9], rdr[10]);
 
 
-
+                        }
+                    }
 
                 }
 
