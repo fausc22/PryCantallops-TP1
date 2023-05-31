@@ -6,79 +6,123 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-
+using System.IO;
 
 namespace PryCantallops_TP1
 {
-    internal class ClassConexion
+    class ClassConexion
     {
-        internal class ClassConexionBD
+        public OleDbConnection conn = new OleDbConnection();
+        public OleDbCommand cmd = new OleDbCommand();
+        OleDbDataReader rdr;
+
+        string ProveedorAccess = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source =";
+        
+
+        public void ConectarBaseDatos(string rutaArchivo)
         {
-            //OBJETOS para manipular la conexiòn y datos de una BD
-            //zona de declaraciones de objetos y variables
-            OleDbConnection miConexion;
-            OleDbCommand miComando;
-            OleDbDataReader miLector;
-
-            string ProveedorAccess = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source =";
-            public string RutaDeBaseDatos = "-";
-
-
-            public void ConectarBaseDeDatos()
+            try
             {
-                try
-                {
-                    //crea el objeto en memoria (instanciar)
-                    miConexion = new OleDbConnection();
 
-                    //debo ingresar la cadena de conexiòn
-                    //proveedor de la base --> connectionsstrings.com
-                    //ruta
-                    //nombre de archivo
-                    //miConexion.ConnectionString = ProveedorAccess + "LocalEnBin.accdb";
-                    miConexion.ConnectionString = ProveedorAccess + RutaDeBaseDatos;
-                    miConexion.Open();
 
-                    MessageBox.Show("base de Datos abierta - con propiedades de la clase");
-                }
-                catch (Exception falla)
-                {
-                    MessageBox.Show("Error: " + falla.Message);
-                }
+                conn = new OleDbConnection();
 
-            }
+                conn.ConnectionString = ProveedorAccess + rutaArchivo;
 
-            public void ConectarBaseDeDatos(string rutaArchivo)
+                conn.Open();
+
+                MessageBox.Show("Base de datos abierta con éxito!");
+            } catch (Exception ex) 
             {
-                try
-                {
-                    //crea el objeto en memoria (instanciar)
-                    miConexion = new OleDbConnection();
-
-                    //debo ingresar la cadena de conexiòn
-                    //proveedor de la base --> connectionsstrings.com
-                    //ruta
-                    //nombre de archivo
-                    miConexion.ConnectionString = ProveedorAccess + rutaArchivo;
-
-                    miConexion.Open();
-
-                    MessageBox.Show("base de Datos abierta - con parametros");
-                }
-                catch (Exception falla)
-                {
-                    MessageBox.Show("Error: " + falla.Message);
-                }
-            }
-
-            public void ListarTablasDeLaBaseDeDatos()
-            {
-                DataTable tablas;
-                tablas = miConexion.GetSchema("Tables");
-
-                //https://social.msdn.microsoft.com/Forums/es-ES/8b06cfb9-ce9b-4ad4-a8d5-53f0f281f198/obtener-el-nombre-de-todas-las-tablas-existentes-en-una-base-de-datos-acces-en-c?forum=vcses
-
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        public string ListarTablasBD(ComboBox cmbTablas, DataGridView dgvTablas, Label lblNombreDB)
+        {
+            dgvTablas.DataSource = null;
+            cmbTablas.SelectedIndex = -1;
+            string cadenaConexion = "";
+            using (OpenFileDialog openFile = new OpenFileDialog())
+            {
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    string rutaArchivo = openFile.FileName;
+                    lblNombreDB.Text = Path.GetFileName(rutaArchivo);
+
+                    if (Path.GetExtension(rutaArchivo) == ".accdb")
+                    {
+                        cadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + rutaArchivo + ";Persist Security Info=False;";
+                    }
+                    else
+                    {
+                        cadenaConexion = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source =" + rutaArchivo + ";";
+                    }
+
+
+                    conn.ConnectionString = cadenaConexion;
+
+                    cmbTablas.Items.Clear();
+
+                    try
+                    {
+                        conn.Open();
+
+                        DataTable tablas = conn.GetSchema("Tables");
+
+                        foreach (DataRow tabla in tablas.Rows)
+                        {
+                            if (tabla[3].ToString() == "TABLE")
+                            {
+                                cmbTablas.Items.Add(tabla[2].ToString());
+                            }
+
+
+                        }
+                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+
+            }
+            return cadenaConexion;
+
+        }
+
+        public void MostrarTablasDB(ComboBox cmbTablas, string cadenaConexion, DataGridView dgvTablas)
+        {
+            if (cmbTablas.SelectedIndex != -1)
+            {
+                conn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=NEPTUNO.accdb";
+
+                try
+                {
+                    
+                    cmd.Connection = conn;
+                    cmd.CommandText = cmbTablas.Text;
+                    cmd.CommandType = CommandType.TableDirect;
+                    cmd.Connection.Open();
+
+                    rdr = cmd.ExecuteReader();
+
+                    DataTable tabla = new DataTable();
+                    tabla.Load(rdr);
+
+                    dgvTablas.DataSource = tabla;
+
+                    cmd.Connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        
+
     }
 }

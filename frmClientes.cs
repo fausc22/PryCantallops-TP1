@@ -25,14 +25,17 @@ namespace PryCantallops_TP1
         private void btnClientes_Click(object sender, EventArgs e)
         {
             string conexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=NEPTUNO.accdb;";
+            dgvClientes.Rows.Clear();
+            cmbCiudad.SelectedIndex = -1;
+            cmbPais.SelectedIndex = -1;
             try
             {
                 cnn = new OleDbConnection(conexion);
-                cnn.Open();
                 cmd = new OleDbCommand();
                 cmd.Connection = cnn;
                 cmd.CommandType = CommandType.TableDirect;
                 cmd.CommandText = "Clientes";
+                cnn.Open();
                 rdr = cmd.ExecuteReader();
 
                 HashSet<string> Paises = new HashSet<string>();
@@ -82,21 +85,21 @@ namespace PryCantallops_TP1
             try
             {
                 cnn = new OleDbConnection(conexion);
-                cnn.Open();
                 cmd = new OleDbCommand();
                 cmd.Connection = cnn;
                 cmd.CommandType = CommandType.TableDirect;
                 cmd.CommandText = "Clientes";
+                cnn.Open();
                 rdr = cmd.ExecuteReader();
                
                 string PaisFiltrado = cmbPais.SelectedItem.ToString();
                 while (rdr.Read())
                 {
-                    if (PaisFiltrado == rdr[8].ToString())
+                    if (rdr[8].ToString() == PaisFiltrado)
                     {
-                        DataTable datosFiltrados = new DataTable();
+                        
 
-                        datosFiltrados.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6], rdr[7], rdr[8], rdr[9], rdr[10]);
+                        dgvClientes.Rows.Add(rdr[0], rdr[1], rdr[2], rdr[3], rdr[4], rdr[5], rdr[6], rdr[7], rdr[8], rdr[9], rdr[10]);
                         
                         
                     }
@@ -111,7 +114,7 @@ namespace PryCantallops_TP1
 
                 
 
-                MessageBox.Show("Datos obtenidos!", "", MessageBoxButtons.OK);
+                
                 dgvClientes.Visible = true;
             }
             catch (Exception ex)
@@ -151,6 +154,7 @@ namespace PryCantallops_TP1
                 MessageBox.Show("ERROR: " + ex.Message, "", MessageBoxButtons.OK);
 
             }
+            cmbCiudad.Enabled = true;
         }
 
         private void cmbPais_SelectedIndexChanged(object sender, EventArgs e)

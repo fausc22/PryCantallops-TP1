@@ -30,5 +30,17 @@ namespace PryCantallops_TP1
             frmLogin frm = new frmLogin();
             frm.ShowDialog();
         }
+
+        private void btnPedidos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmTablas frm = new frmTablas();
+            frm.ShowDialog();
+        }
     }
 }

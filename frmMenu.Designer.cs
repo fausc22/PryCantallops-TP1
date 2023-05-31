@@ -30,10 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTablas = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
-            this.btnProveedores = new System.Windows.Forms.Button();
-            this.btnPedidos = new System.Windows.Forms.Button();
-            this.btnProductos = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -51,9 +49,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox1.Controls.Add(this.btnProductos);
-            this.groupBox1.Controls.Add(this.btnPedidos);
-            this.groupBox1.Controls.Add(this.btnProveedores);
+            this.groupBox1.Controls.Add(this.btnTablas);
             this.groupBox1.Controls.Add(this.btnClientes);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -62,52 +58,31 @@
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Seleccione una tabla";
+            this.groupBox1.Text = "Seleccione una funcion";
+            // 
+            // btnTablas
+            // 
+            this.btnTablas.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnTablas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTablas.Location = new System.Drawing.Point(53, 23);
+            this.btnTablas.Name = "btnTablas";
+            this.btnTablas.Size = new System.Drawing.Size(89, 27);
+            this.btnTablas.TabIndex = 4;
+            this.btnTablas.Text = "Tablas";
+            this.btnTablas.UseVisualStyleBackColor = false;
+            this.btnTablas.Click += new System.EventHandler(this.btnProductos_Click);
             // 
             // btnClientes
             // 
             this.btnClientes.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientes.Location = new System.Drawing.Point(10, 23);
+            this.btnClientes.Location = new System.Drawing.Point(53, 56);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(89, 27);
             this.btnClientes.TabIndex = 1;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = false;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
-            // 
-            // btnProveedores
-            // 
-            this.btnProveedores.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProveedores.Location = new System.Drawing.Point(105, 23);
-            this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Size = new System.Drawing.Size(89, 27);
-            this.btnProveedores.TabIndex = 2;
-            this.btnProveedores.Text = "Proveedores";
-            this.btnProveedores.UseVisualStyleBackColor = false;
-            // 
-            // btnPedidos
-            // 
-            this.btnPedidos.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedidos.Location = new System.Drawing.Point(10, 56);
-            this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.Size = new System.Drawing.Size(89, 27);
-            this.btnPedidos.TabIndex = 3;
-            this.btnPedidos.Text = "Pedidos";
-            this.btnPedidos.UseVisualStyleBackColor = false;
-            // 
-            // btnProductos
-            // 
-            this.btnProductos.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductos.Location = new System.Drawing.Point(105, 56);
-            this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Size = new System.Drawing.Size(89, 27);
-            this.btnProductos.TabIndex = 4;
-            this.btnProductos.Text = "Productos";
-            this.btnProductos.UseVisualStyleBackColor = false;
             // 
             // btnCerrar
             // 
@@ -130,7 +105,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMenu";
+            this.Text = "MENU PRINCIPAL";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -141,9 +116,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnProductos;
-        private System.Windows.Forms.Button btnPedidos;
-        private System.Windows.Forms.Button btnProveedores;
+        private System.Windows.Forms.Button btnTablas;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnCerrar;
     }
