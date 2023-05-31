@@ -84,6 +84,7 @@ namespace PryCantallops_TP1
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             string conexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=NEPTUNO.accdb;";
+            dgvClientes.Rows.Clear();
             try
             {
                 cnn = new OleDbConnection(conexion);
@@ -94,7 +95,7 @@ namespace PryCantallops_TP1
                 cnn.Open();
                 rdr = cmd.ExecuteReader();
                
-                PaisFiltrado = cmbPais.SelectedItem.ToString();
+                PaisFiltrado = cmbPais.Text;
                   
                 while (rdr.Read())
                 {

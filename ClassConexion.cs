@@ -17,7 +17,7 @@ namespace PryCantallops_TP1
         OleDbDataReader rdr;
 
         string ProveedorAccess = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source =";
-        
+
 
         public void ConectarBaseDatos(string rutaArchivo)
         {
@@ -32,7 +32,8 @@ namespace PryCantallops_TP1
                 conn.Open();
 
                 MessageBox.Show("Base de datos abierta con éxito!");
-            } catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
@@ -96,6 +97,7 @@ namespace PryCantallops_TP1
         {
             if (cmbTablas.SelectedIndex != -1)
             {
+                
                 conn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=NEPTUNO.accdb";
 
                 try
